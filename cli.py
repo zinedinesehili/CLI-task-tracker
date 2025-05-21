@@ -1,6 +1,17 @@
+"""
+Author: Zinedine Sehili
+Filename: cli.py
+
+Purpose:
+
+"""
+
 from dataclasses import dataclass
 import json
 
+#list with all tasks
+#TODO import tasks from a json so it doesn't restart every time it runs
+tasks = []
 
 def help():
     """
@@ -15,9 +26,23 @@ def help():
     print("\tlist                                   lists all tasks")
     print("\tlist [done/todo/in-progress]           lists tasks by status")
 
+def add(description):
+    """
+    creates a task (a dictionary)
+
+    dictionary items:
+    - id
+    - description
+    - status
+    """
+
+    task = {}
+    task["id"] = len(tasks) + 1
+    task["description"] = description
+    task["status"] = "todo"
+
 def main():
     id = 1;
-    tasks = {}
 
     print("Task Tracker: type help for commands")
     action = input()    #action is whatever the user wants to do
